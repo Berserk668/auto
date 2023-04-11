@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver import ActionChains, Keys
-import time
+import time, datetime
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
@@ -26,6 +26,9 @@ time.sleep(1)
 filter.send_keys(Keys.DOWN) # Имитация кнопки "вниз"
 time.sleep(1)
 filter.send_keys(Keys.RETURN)
+now_date = datetime.datetime.utcnow().strftime('%d.%m.%Y.%H.%M.') # дата и время скрина
+name_screenshot = 'screenshot.png' + now_date + '.png' # дата и время скрина
+driver_g.save_screenshot('C:\\testing\\test_1\\screen\\' + name_screenshot) #  Скрин экрана
 
 time.sleep(5)
 driver_g.close()
